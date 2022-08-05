@@ -1,94 +1,155 @@
 <template>
-  <div class="nav">
-      <div class="nav-bar">
-        <div class="nav-logo">
-          <a href="/">
-            <img src="../assets/logo_food.png" alt="Logomarca">
-          </a>
-          <p class="logo_text">My Healthy Food</p> 
-        </div>
-        <div class="menu-mobile">
-          <img id="menu-image" src="../assets/menu_mobile.png" alt="Abrir Menu">
-        </div>
-        <div class="nav-links">
-          <ul>
-            <li>Receitas</li>
-            <li>Ingredientes</li>
-            <li>Sobre</li>
-          </ul>
-        </div>
+  <header>
+    <nav>
+      <div class="logo-container">
+        <a href="/"><img id="logo" src="../assets/logo_food.png" alt="Logo"></a>
+        <p class="logo-text">My Healthy Food</p>
       </div>
-  </div>
+      
+      <img id="menu-button" src="../assets/menu_mobile.png" alt="Abrir Menu" @click="openMenu()">
+
+      <div id="menu-overlay" v-if="menuActive" @click="closeMenu()"></div>
+
+      <div id="menu-items" :class="{active:menuActive}">
+
+        <ul>
+          <li><a href="/">Receitas</a></li>
+          <li><a href="/">Ingredientes</a></li>
+          <li><a href="/">Sobre</a></li>
+        </ul>
+
+      </div>
+    </nav>
+  </header>
 </template>
 
 <script>
   export default {
-    name: 'HeaderNav'
+    name: 'HeaderNav',
+    data() {
+      return {
+        menuActive: false
+      }
+    },
+    methods: {
+      openMenu: function() {
+        this.menuActive = true;
+      },
+      closeMenu: function() {
+        this.menuActive = false;
+      }
+    }
   }
 </script>
 
 <style scoped>
 
-.menu-mobile{
-  display: none;
-}
-
-#menu-image {
-  height: 36px;
-}
-
-.nav {
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.nav-bar {
+header {
   width:80%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  height: 120px;
+  margin: 0 auto;
 }
 
-.nav-logo {
-  display:flex;
-  justify-content: center;
+nav {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
   align-items: center;
 }
-.logo_text {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
+
+.logo-container {
+  display:flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.logo-container .logo-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
   letter-spacing: 3px;
-  font-size: 1.125rem;
+  font-weight: 700;
   margin-left: 1rem;
 }
 
-.nav-links ul{
-  display:flex;
+#menu-button {
+  height: 35px;
+}
+
+#menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:40%;
+  height: 100vh;
+  background-color: rgba(20, 30, 20, 0.7);
+}
+
+#menu-items {
+  position: fixed;
+  top:0;
+  right: 0;
+  width:60%;
+  height: 100vh;
+  background-color: #222A2B;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.active {
+  display:flex !important; 
+}
+
+ul {
   list-style: none;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
+  text-align: center;
+  margin-top: 1rem;
 }
 
-.nav-links ul li{
-  margin: 0 10px;
-  transition: all 300ms ease-in-out;
+ul li {
+  margin: 20px 0;
 }
 
-.nav-links ul li:hover{
+ul li a {
+  text-decoration: none;
+  color:white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+
+  transition: all 300ms ease;
+}
+
+ul li a:hover {
   color: #009B17;
-  cursor: pointer;
 }
 
-@media (max-width:768px) {
-  .nav-links {
-    display: none;
+@media (min-width:1178px) {
+  #menu-button {
+    display:none;
   }
 
-  .menu-mobile {
-    display: block;
+  #menu-items {
+    display: flex;
+    position: static;
+    height: 120px;
+    width: auto;
+    background-color: transparent;
+  }
+
+  ul {
+    display:flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+  }
+
+  ul li {
+    margin-left: 2rem;
+  }
+
+  ul li a {
+    color:black;
+    font-weight: 500;
   }
 }
 </style>
