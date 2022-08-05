@@ -55,7 +55,7 @@
     display: grid;
     width:80%;
     grid-template-columns: repeat(12, 1fr);
-    gap:20px;
+    grid-gap:20px;
     overflow-x: hidden;
 }
 
