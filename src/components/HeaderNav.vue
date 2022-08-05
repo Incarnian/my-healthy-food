@@ -2,8 +2,13 @@
   <div class="nav">
       <div class="nav-bar">
         <div class="nav-logo">
-          <img src="../assets/logo_food.png" alt="Logomarca">
-          <p class="logo_text">My Healthy Food</p>
+          <a href="/">
+            <img src="../assets/logo_food.png" alt="Logomarca">
+          </a>
+          <p class="logo_text">My Healthy Food</p> 
+        </div>
+        <div class="menu-mobile">
+          <img id="menu-image" src="../assets/menu_mobile.png" alt="Abrir Menu">
         </div>
         <div class="nav-links">
           <ul>
@@ -24,6 +29,14 @@
 
 <style scoped>
 
+.menu-mobile{
+  display: none;
+}
+
+#menu-image {
+  height: 36px;
+}
+
 .nav {
   height: 120px;
   display: flex;
@@ -32,7 +45,7 @@
 }
 
 .nav-bar {
-  width:1160px;
+  width:80%;
   height: 50px;
   display: flex;
   align-items: center;
@@ -67,6 +80,16 @@
 .nav-links ul li:hover{
   color: #009B17;
   cursor: pointer;
+}
+
+@media (max-width:768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .menu-mobile {
+    display: block;
+  }
 }
 </style>
 

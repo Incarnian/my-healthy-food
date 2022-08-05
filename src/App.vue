@@ -14,7 +14,7 @@ import '../styles/global.css'
 export default {
   name: 'App',
   components: {
-    HeaderNav,
+   HeaderNav,
     HomeContent
   }
 }
@@ -22,9 +22,7 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(180deg, rgba(239,255,239,1) 0%, rgba(255,255,255,1) 100%);
 }
 </style>
