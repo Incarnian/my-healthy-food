@@ -3,22 +3,22 @@
     <h1 class="title">Receitas</h1>
     <div class="container">
 
-    <div class="card">
-      <img class="card-img" :src="this.linkImgReceita" alt="">
+    <div v-for="(receita, index) in receitas.recipes" :key="index" class="card">
+      <img class="card-img" :src="receita.image" alt="">
       <div class="card-content">
         <div class="card-text">
-          <h1 class="card-title">{{ this.nomeReceita }}</h1>
-          <p class="card-description">{{ this.descReceita }}</p>
+          <a :href="receita.sourceUrl" class="card-title">{{ receita.title }}</a>
+          <p class="card-description">{{ receita.sourceUrl }}</p>
         </div>
       <div class="card-info">
         <div class="card-timer">
           <img class="green" src="../assets/timer.svg" alt="">
-          <p class="timer-text">{{ this.tempoReceita }} minutos</p>
+          <p class="timer-text">{{ receita.readyInMinutes }} minutos</p>
         </div>
         <div class="card-diet">
-          <img :class="baratoReceita == 'true' ? greenClass : grayClass" src="../assets/cheap.svg" alt="Barata" title="Barata">
-          <img :class="veganReceita == 'true' ? greenClass : grayClass" src="../assets/vegan.svg" alt="Vegana" title="Vegana">
-          <img :class="vegetReceita == 'true' ? greenClass : grayClass" src="../assets/vegetarian.svg" alt="Vegetariana" title="Vegetariana">
+          <img :class="receita.cheap == 'true' ? greenClass : grayClass" src="../assets/cheap.svg" alt="Barata" title="Barata">
+          <img :class="receita.vegan == 'true' ? greenClass : grayClass" src="../assets/vegan.svg" alt="Vegana" title="Vegana">
+          <img :class="receita.vegetarian == 'true' ? greenClass : grayClass" src="../assets/vegetarian.svg" alt="Vegetariana" title="Vegetariana">
         </div>
       </div>
       </div>
@@ -36,27 +36,14 @@ export default {
   name: 'RecipesContent',
   data() {
     return {
-      nomeReceita: '',
-      tempoReceita: '',
-      descReceita: '',
-      linkImgReceita: '',
-      baratoReceita: '',
-      veganReceita: '',
-      vegetReceita: '',
+      receitas:[],
       greenClass: 'green',
-      grayClass: 'gray'
+      grayClass: 'gray',
     }
   },
   mounted() {
-            api.get('/recipes/random/?apiKey=f0c1e40c57f443b198ed55e93ee4aa91').then(response =>{
-                this.nomeReceita = response.data.recipes[0].title;
-                this.tempoReceita = response.data.recipes[0].readyInMinutes;
-                this.descReceita = response.data.recipes[0].sourceUrl;
-                this.linkImgReceita = response.data.recipes[0].image;
-                this.baratoReceita = response.data.recipes[0].cheap;
-                this.veganReceita = response.data.recipes[0].vegan;
-                this.vegetReceita = response.data.recipes[0].vegetarian;
-                console.log(response.data);
+            api.get('/recipes/random/?apiKey=f0c1e40c57f443b198ed55e93ee4aa91&number=10').then(response =>{
+                this.receitas = response.data;
             })
         }
 }
@@ -99,6 +86,7 @@ export default {
   font-weight: 700;
   font-size: 2rem;
   color: #009B17;
+  text-decoration: none;
 }
 
 .card-description {
