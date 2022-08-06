@@ -2,7 +2,7 @@
   <header>
     <nav>
       <div class="logo-container">
-        <a href="/"><img id="logo" src="../assets/logo_food.png" alt="Logo"></a>
+        <router-link to="/"><img id="logo" src="../assets/logo_food.png" alt="Logo"></router-link>
         <p class="logo-text">My Healthy Food</p>
       </div>
       
@@ -13,9 +13,9 @@
       <div id="menu-items" :class="{active:menuActive}">
 
         <ul>
-          <li><router-link to="/receitas">Receitas</router-link></li>
-          <li><router-link to="/ingredientes">Ingredientes</router-link></li>
-          <li><router-link to="/sobre">Sobre</router-link></li>
+          <li><router-link to="/recipes">Receitas</router-link></li>
+          <li><router-link to="/ingredients">Ingredientes</router-link></li>
+          <li><router-link to="/about">Sobre</router-link></li>
         </ul>
 
       </div>
