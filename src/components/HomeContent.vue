@@ -43,8 +43,17 @@
 </template>
 
 <script>
+
+    //import api from '@/services/api.js'
+
     export default {
-        name: 'HomeContent'
+        name: 'HomeContent',
+        // mounted() {
+        //     api.get('/recipes/random/?apiKey=f0c1e40c57f443b198ed55e93ee4aa91').then(response =>{
+        //         console.log(response.data);
+        //         console.log(response.data.recipes[0].title);
+        //     })
+        // }
     }
 </script>
 

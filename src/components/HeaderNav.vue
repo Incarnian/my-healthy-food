@@ -13,9 +13,9 @@
       <div id="menu-items" :class="{active:menuActive}">
 
         <ul>
-          <li><a href="/">Receitas</a></li>
-          <li><a href="/">Ingredientes</a></li>
-          <li><a href="/">Sobre</a></li>
+          <li><router-link to="/receitas">Receitas</router-link></li>
+          <li><router-link to="/ingredientes">Ingredientes</router-link></li>
+          <li><router-link to="/sobre">Sobre</router-link></li>
         </ul>
 
       </div>
