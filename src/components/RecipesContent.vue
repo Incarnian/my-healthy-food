@@ -8,7 +8,9 @@
       <div class="card-content">
         <div class="card-text">
           <a :href="receita.sourceUrl" class="card-title">{{ receita.title }}</a>
-          <p class="card-description">{{ receita.sourceUrl }}</p>
+          <p class="card-description">Serve {{receita.servings}} pessoas.</p>
+          <p class="card-description">Essa receita possui glútem? <span class="green"> {{receita.glutenFree ? "Sim" : "Não"}}. </span></p>
+
         </div>
       <div class="card-info">
         <div class="card-timer">
@@ -16,9 +18,9 @@
           <p class="timer-text">{{ receita.readyInMinutes }} minutos</p>
         </div>
         <div class="card-diet">
-          <img :class="receita.cheap == 'true' ? greenClass : grayClass" src="../assets/cheap.svg" alt="Barata" title="Barata">
-          <img :class="receita.vegan == 'true' ? greenClass : grayClass" src="../assets/vegan.svg" alt="Vegana" title="Vegana">
-          <img :class="receita.vegetarian == 'true' ? greenClass : grayClass" src="../assets/vegetarian.svg" alt="Vegetariana" title="Vegetariana">
+          <img :class="receita.cheap ? greenClass : grayClass" src="../assets/cheap.svg" alt="Barata" title="Barata">
+          <img :class="receita.vegan ? greenClass : grayClass" src="../assets/vegan.svg" alt="Vegana" title="Vegana">
+          <img :class="receita.vegetarian ? greenClass : grayClass" src="../assets/vegetarian.svg" alt="Vegetariana" title="Vegetariana">
         </div>
       </div>
       </div>
@@ -74,10 +76,11 @@ export default {
   background-color: #fff;
   grid-column-start: 1;
   grid-column-end: 12;
-  height: 200px;
+  min-height: 200px;
   border-radius: 10px;
   display:flex;
   box-shadow: 6px 5px 8px 0px rgba(0,0,0,0.66);
+  margin-bottom: 1rem;
   
 }
 
@@ -99,7 +102,7 @@ export default {
   display:flex;
   flex-direction: column;
   justify-content: space-between;
-  width:100%;
+  width:70%;
 }
 
 .card-timer {
@@ -144,6 +147,47 @@ export default {
 
 .card-diet img {
   margin-right: 0.5rem;
+  
+}
+
+@media (max-width:996px) {
+  .card {
+    flex-direction: column;
+    grid-column-end: 12;
+    min-height: 320px;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-text {
+    margin-bottom: 3rem;
+  } 
+
+  .card-content {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    justify-content: space-between;
+    height: 100%;
+    width:95%;
+  }
+
+  .card-img {
+    border-radius: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width:100%;
+  }
+
+  .timer-text {
+    margin-left: 0.5rem;
+  }
+
+  .card-diet {
+    margin-right: 0;
+  }
 }
 </style>
 

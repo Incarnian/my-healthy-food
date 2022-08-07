@@ -82,6 +82,7 @@ nav {
   width:40%;
   height: 100vh;
   background-color: rgba(20, 30, 20, 0.7);
+  z-index: 10;
 }
 
 #menu-items {
@@ -94,6 +95,7 @@ nav {
   display: none;
   flex-direction: column;
   align-items: center;
+  z-index: 10;
 }
 
 .active {
