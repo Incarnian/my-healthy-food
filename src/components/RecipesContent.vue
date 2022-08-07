@@ -9,7 +9,7 @@
         <div class="card-text">
           <a :href="receita.sourceUrl" class="card-title">{{ receita.title }}</a>
           <p class="card-description">Serve {{receita.servings}} pessoas.</p>
-          <p class="card-description">Essa receita possui glútem? <span class="green"> {{receita.glutenFree ? "Sim" : "Não"}}. </span></p>
+          <p class="card-description">Essa receita possui glúten? <span class="green"> {{receita.glutenFree ? "Sim" : "Não"}}. </span></p>
 
         </div>
       <div class="card-info">
